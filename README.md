@@ -1,2 +1,2 @@
 # gumroad-verify
-Verify a gumroad license key
+Verify a Gumroad license key
