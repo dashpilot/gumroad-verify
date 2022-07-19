@@ -18,17 +18,27 @@
       
       <div class="text-center p-3 pb-5" style="font-size: 30px;"><i class="fas fa-lock" id="icon"></i></div>
       
-    <h5 class="card-title">Your Gumroad license key</h5>
-    <p class="card-text">You can find the license key in the email you received after purchase</p>
       
-      <input type="text" class="form-control mb-3" placeholder="license" id="license">
-    <button class="btn btn-primary w-100" id="verify">Verify</button>
+    <div id="log_in">
+        <h5 class="card-title">Your Gumroad license key</h5>
+        <p class="card-text">You can find the license key in the email you received after purchase</p>
+        <input type="text" class="form-control mb-3" placeholder="license" id="license">
+        <button class="btn btn-primary w-100" id="verify">Verify</button>
+    </div>
+      
+      <div id="logged_in">
+        
+        
+      </div>
+      
   </div>
     
   </div>
   
   <script>
     const icon = document.querySelector('#icon')
+    const log_in = document.querySelector('#log_in')
+    const logged_in = document.querySelector('#logged_in')
     
     document.querySelector('#verify').addEventListener('click', ()=>{
       
@@ -48,9 +58,13 @@
         console.log('Success:', data);
         if(data.isValid){
           localStorage.setItem('logged_in', true);
-          alert('Valid License');
+          // alert('Valid License');
           icon.classList.remove('fa-lock');
           icon.classList.add('fa-heart');
+          
+          log_in.style.display = 'none';
+          logged_in.style.display = 'block';
+          
         }else{
           alert('Invalid License');
         }
