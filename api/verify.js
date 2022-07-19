@@ -10,7 +10,7 @@ module.exports = async (req, res) =>{
                                 method: 'post',
                                 url: 'https://api.gumroad.com/v2/licenses/verify',
                                 data: {
-                                product_permalink: '<your product permalink here>',
+                                product_permalink: process.env.PRODUCT_PERMALINK,
                                 license_key: req.body.license //can change this according to what the payload will look like
                                 },
                                 validateStatus: function (status) {
