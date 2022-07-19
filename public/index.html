@@ -8,6 +8,31 @@
 </head>
 
 <body>
+  
+  
+  <div class="card mt-5" style="width: 300px;">
+    
+    <div class="card-body">
+    <h5 class="card-title">Your Gumroad license key</h5>
+    <p class="card-text">You can find the license key in the email you received after purchase</p>
+      
+      <input type="text" class="form-control" placeholder="license" id="license">
+    <button class="btn btn-primary w-100" id="verify">Verify</button>
+  </div>
+    
+  </div>
+  
+  <script>
+    document.querySelector('#verify').addEventListener('click', (ev)=>{
+      
+      let license = document.querySelector('#license').value
+      
+      console.log(license);
+      
+    });
+  </script>
+  
+  
 </body>
 
 </html>
