@@ -27,8 +27,6 @@
       
       let license = document.querySelector('#license').value
       
-      console.log(license);
-      
       const data = { license: license };
 
       fetch('/api/verify', {
@@ -41,6 +39,12 @@
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        if(data.isValid){
+          localStorage.setItem('logged_in', true);
+          alert('Valid License');
+        }else{
+          alert('Invalid License');
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
