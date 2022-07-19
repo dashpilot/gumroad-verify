@@ -16,7 +16,8 @@
     
     <div class="card-body">
       
-      <div class="text-center p-3" style="font-size: 30px;"><i class="fas fa-lock"></i></div>
+      <div class="text-center p-3 pb-5" style="font-size: 30px;" id="icon"><i class="fas fa-lock"></i></div>
+      
     <h5 class="card-title">Your Gumroad license key</h5>
     <p class="card-text">You can find the license key in the email you received after purchase</p>
       
@@ -27,6 +28,8 @@
   </div>
   
   <script>
+    const icon = document.querySelector('#icon')
+    
     document.querySelector('#verify').addEventListener('click', ()=>{
       
       let license = document.querySelector('#license').value
@@ -46,6 +49,8 @@
         if(data.isValid){
           localStorage.setItem('logged_in', true);
           alert('Valid License');
+          icon.classList.remove('fa-lock');
+          icon.classList.add('fa-heart');
         }else{
           alert('Invalid License');
         }
