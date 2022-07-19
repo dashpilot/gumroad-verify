@@ -10,24 +10,42 @@
 <body>
   
   
-  <div class="card mt-5" style="width: 300px;">
+  <div class="card m-auto mt-5" style="width: 300px;">
     
     <div class="card-body">
     <h5 class="card-title">Your Gumroad license key</h5>
     <p class="card-text">You can find the license key in the email you received after purchase</p>
       
-      <input type="text" class="form-control" placeholder="license" id="license">
+      <input type="text" class="form-control mb-3" placeholder="license" id="license">
     <button class="btn btn-primary w-100" id="verify">Verify</button>
   </div>
     
   </div>
   
   <script>
-    document.querySelector('#verify').addEventListener('click', (ev)=>{
+    document.querySelector('#verify').addEventListener('click', ()=>{
       
       let license = document.querySelector('#license').value
       
       console.log(license);
+      
+      const data = { license: license };
+
+      fetch('/api/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
       
     });
   </script>
